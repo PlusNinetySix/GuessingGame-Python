@@ -1,30 +1,34 @@
+import random
 from random import randint
 
-def game(random_num):
-    while(True):
+def randgen():
+    b = int(input('Please input a number to set the range.\n'))
+    randnum = randint(1,b)
+    return randnum
+
+def game(randnum):
+    win = False
+    while not win:
         guess = int(input('Input guess\n'))
-        if guess < random_num:
+        if guess < randnum:
             print('Too low, try again!')
             insultgen()
-        elif guess > random_num:
+        elif guess > randnum:
             print('Too high, try again!')
             insultgen()
-        elif guess == random_num:
-            endgame(random_num)            
-
-def endgame(random_num):
-    r = input('You got it! Want to play again? y/n\n')
-    if r == 'y':
-        game(random_num)
-    elif r == 'n':
-        print('Thanks for playing!')
+        else:
+            print('Got it!')
+            win = True
 
 def insultgen():
-    ins = ['You got it wrong, you fool!','You nincompoop, why did you type that number?','','','']
-    #print (ins[1])
+    ins = ['You got it wrong, you fool!','You clod, why did you type that number?','You'"'re not very bright.",'How did you get that number? It'"'s not even close.",'I honestly do not know how you even got that number...']
+    print (random.choice(ins))
 
-b = int(input('Please input a number to set the range.\n'))
-random_num = randint(1,b)
-print(random_num)
-
-game(random_num)
+playagain = True
+while playagain:
+    game(randgen())
+    p = input('Want to play again? y/n\n')
+    if p =='y':
+        playagain = True
+    else:
+        playagain = False
