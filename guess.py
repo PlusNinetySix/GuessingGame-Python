@@ -31,4 +31,5 @@ while playagain:
     if p =='y':
         playagain = True
     else:
+        print('Thanks for playing!')
         playagain = False
